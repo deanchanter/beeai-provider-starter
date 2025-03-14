@@ -6,6 +6,7 @@ from beeai_sdk.schemas.metadata import UiDefinition, UiType
 from beeai_sdk.schemas.text import TextInput, TextOutput
 
 from beeai_agents.configuration import Configuration
+from beeai_agents.docker_agent import main as docker_agent
 
 
 async def run():
@@ -20,7 +21,9 @@ async def run():
     )
     async def example_agent(input: TextInput, ctx: Context) -> TextOutput:
         """TODO: Your implementation goes here."""
-        return TextOutput(text=Configuration().hello_template % input.text)
+        results = await docker_agent()
+        # results = "hello world"
+        return TextOutput(text=results)
 
     await run_agent_provider(server)
 
