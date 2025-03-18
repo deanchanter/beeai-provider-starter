@@ -6,3 +6,14 @@ serverType: http
 mcpTransport: sse
 mcpEndpoint: /sse
 command: [ "beeai-agents" ]
+env:
+- name : WATSONX_API_URL 
+  decription: "WatsonX API URL"
+  required: True
+- name : WATSONX_API_KEY
+  description: "WatsonX API Key"
+  required: True
+- name : WATSONX_PROJECT_ID
+  description: "WatsonX Project ID"
+  required: True
+

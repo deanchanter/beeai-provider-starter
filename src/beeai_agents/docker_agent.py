@@ -9,7 +9,7 @@ from beeai_framework.workflows.workflow import Workflow, WorkflowError
 from dotenv import load_dotenv
 import os
 import asyncio
-load_dotenv()
+load_dotenv(override=True)
 
 # Workflow State
 class DockerAgentState(BaseModel):
@@ -36,9 +36,9 @@ class DockerScore(BaseModel):
 model = ChatModel.from_name(
     "watsonx:meta-llama/llama-3-3-70b-instruct",
     options={
-        "project_id": os.environ['WATSONX_PROJECT_ID'],
-        "api_key": os.environ['WATSONX_API_KEY'],
-        "api_base": os.environ['WATSONX_API_URL'],
+        "project_id": os.getenv('WATSONX_PROJECT_ID',None),
+        "api_key": os.getenv('WATSONX_API_KEY',None),
+        "api_base": os.getenv('WATSONX_API_URL',None)
     },
 )
 

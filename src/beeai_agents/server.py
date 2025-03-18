@@ -13,11 +13,11 @@ async def run():
     server = Server("beeai-agents")
 
     @server.agent(
-        name="example-agent",
-        description="Dummy agent to showcase beeai platform extension",
+        name="devops-agent",
+        description="Make a docker file from a README",
         input=TextInput,
         output=TextOutput,
-        ui=UiDefinition(type=UiType.hands_off, userGreeting="What is your name?"),
+        ui=UiDefinition(type=UiType.hands_off, userGreeting="Please provide a README file"),
     )
     async def example_agent(input: TextInput, ctx: Context) -> TextOutput:
         """TODO: Your implementation goes here."""
