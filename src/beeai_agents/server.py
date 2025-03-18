@@ -6,22 +6,22 @@ from beeai_sdk.schemas.metadata import UiDefinition, UiType
 from beeai_sdk.schemas.text import TextInput, TextOutput
 
 from beeai_agents.configuration import Configuration
-from beeai_agents.docker_agent import main as docker_agent
+from beeai_agents.docker_agent import docker_agent
 
 
 async def run():
     server = Server("beeai-agents")
 
     @server.agent(
-        name="devops-agent",
+        name="devops_agent",
         description="Make a docker file from a README",
         input=TextInput,
         output=TextOutput,
         ui=UiDefinition(type=UiType.hands_off, userGreeting="Please provide a README file"),
     )
-    async def example_agent(input: TextInput, ctx: Context) -> TextOutput:
+    async def devops_agent(input: TextInput, ctx: Context) -> TextOutput:
         """TODO: Your implementation goes here."""
-        results = await docker_agent()
+        results = await docker_agent(input.text)
         # results = "hello world"
         return TextOutput(text=results)
 
